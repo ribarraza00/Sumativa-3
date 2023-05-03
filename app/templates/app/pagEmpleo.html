@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  {%load static%}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de Sesion</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <link rel="stylesheet" href="{%static 'app/css/css.css'%}">
+</head>
+  <header>
+    <div class="menu-p">
+      <div><a class="logo" href="{% url 'pagPrincipal'%}">Trabajo Futuro</a></div>
+            <nav class="menu">
+              <a href="">Inicia sesión</a>
+              <a href="{% url 'form_persona'%}">Registrate</a>
+              <a href="#">Personas</a>
+              <a href="{% url 'pagEmpleo'%}">Empleo</a>
+              <a href="{% url 'pagNosotros'%}">Nosotros</a>
+            </nav>
+     </div>
+</header>
+<body>
+    <div class="emple">
+
+    
+    <H1 class="titulo">Nuevas Ofertas Laborales</H1>
+	<div class="section">
+        <div><a class="Trabajos" href="empInformaticos.html">Trabajos Informaticos</a></div>
+        <div><a class="Trabajos " href="empRetail.html">Trabajos de Retail</a></div>
+        <div><a class="Trabajos " href="empAgopecuario.html">Trabajos Agropecuarios</a></div>
+        <div><a class="Trabajos " href="empMinero.html">Trabajos de Mineria</a></div>
+	</div>
+</div>
+</body>
+<footer>
+    <div class="navegacion-baja">
+        <a href="pagIniciosesion.html">FuturoTrabajo ®2023</a>
+        <a href="#">Personas</a>
+        <a href="#">Empresas</a>
+        <a href="#">Ayuda</a>
+        <a href="#">Otros</a>
+        <a>Numero de servicio al Cliente: Celular +56987577770. Fono +562225453367</a>
+    </div>
+    </div>
+</footer>
+</html>

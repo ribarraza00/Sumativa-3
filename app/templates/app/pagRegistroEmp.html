@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  {%load static%}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de Sesion</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <link rel="stylesheet" href="{%static 'app/css/css.css'%}">
+  <header>
+    <div class="menu-p">
+      <div><a class="logo" href="{% url 'pagPrincipal'%}">Trabajo Futuro</a></div>
+            <nav class="menu">
+              <a href="{% url 'pagIniciosesion'%}">Inicia sesión</a>
+              <a href="{% url 'pagRegistro'%}">Registrate</a>
+              <a href="#">Personas</a>
+              <a href="{% url 'pagEmpleo'%}">Empleo</a>
+              <a href="{% url 'pagNosotros'%}">Nosotros</a>
+            </nav>
+     </div>
+</header>
+</head>
+<body>
+    <div class="titleRegistro"><h1>Registrate</h1></div>
+    <div class="container-fluid">
+        <form class="row g-3 needs-validation" novalidate>
+            <div class="col-md-4">
+              <label for="validationCustom01" class="form-label">ID Empresa</label>
+              <input type="text" class="form-control" id="validationCustom01" value="" required>
+              <div class="valid-feedback">
+                Bien!
+              </div>
+              <div class="invalid-feedback">
+                Porfavor ingresa un ID  a tu empresa.
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="validationCustom02" class="form-label">Nombre Empresa</label>
+              <input type="text" class="form-control" id="validationCustom02" value="E-contact" required>
+              <div class="valid-feedback">
+                Bien!
+              </div>
+              <div class="invalid-feedback">
+                Porfavor ingresa un nombre a tu empresa.
+              </div>
+            </div>
+            <div class="col-md-4">
+                <label for="validationCustom02" class="form-label">Razon Social</label>
+                <input type="text" class="form-control" id="validationCustom02" value="" required>
+                <div class="valid-feedback">
+                  Bien!
+                </div>
+                <div class="invalid-feedback">
+                  Porfavor ingresa la razon social empresa.
+                </div>
+              </div>
+            <div class="form-group">
+              <input class="form-control item" type="email" name="email" id="email" placeholder="Correo Empresa" required>
+              <div class="valid-feedback">
+                Bien!
+              </div>
+              <div class="invalid-feedback">
+                Porfavor ingresa un Correo Valido.
+              </div>
+            </div>
+            <div class="form-group">
+              <input class="form-control item" type="password" name="password" minlength="6" id="password" placeholder="Contraseña Empresa" required>
+              <div class="valid-feedback">
+                Bien!
+              </div>
+              <div class="invalid-feedback">
+                Porfavor ingresa una contraseña con un minimo de 6 caracteres o mas
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="validationCustom03" class="form-label">Ciudad</label>
+              <input type="text" class="form-control" id="validationCustom03" required>
+              <div class="invalid-feedback">
+                Porfavor ingresa una Ciudad.
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="validationCustom04" class="form-label">Region</label>
+              <select class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">...</option>
+                <option>Región de Arica y Parinacota</option>
+                <option>Región de Tarapacá</option>
+                <option>Región de Antofagasta</option>
+                <option>Región de Atacama</option>
+                <option>Región de Coquimbo.</option>
+                <option>Región de Valparaíso.</option>
+                <option>Región Metropolitana.</option>
+                <option>Región de O'Higgins.</option>
+              </select>
+              <div class="invalid-feedback">
+                Seleccione una region.
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label for="validationCustom05" class="form-label">Giro Empresa</label>
+              <select class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">...</option>
+                <option>Ganaderia</option>
+                <option>Software</option>
+                <option>Construccion</option>
+                <option>Bienes raices</option>
+                <option>Transporte aereo</option>
+                <option>Turismo</option>
+                <option>Comercio Exterior</option>
+                <option>Otros....</option>
+              </select>
+              <div class="invalid-feedback">
+                Seleccione el GIro de su Empresa.
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                  Acepto los terminos y condiciones.
+                </label>
+                <div class="invalid-feedback">
+                  Debe estar de acuerdo antes de enviar.
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">Enviar formulario</button>
+            </div>
+          </form>
+
+    </div>
+
+    <script>
+        
+(function () {
+  'use strict'
+
+  
+  var forms = document.querySelectorAll('.needs-validation')
+
+  
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+</body>
+<footer>
+  <div class="navegacion-baja">
+      <a href="pagIniciosesion.html">FuturoTrabajo ®2023</a>
+      <a href="#">Personas</a>
+      <a href="#">Empresas</a>
+      <a href="#">Ayuda</a>
+      <a href="#">Otros</a>
+      <a href="#">Numero de servicio al Cliente: Celular +56987577770. Fono +562225453367</a>
+  </div>
+</footer>
+</html>
