@@ -1,6 +1,10 @@
-from django.shortcuts import render
-from .models import Persona
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.hashers import check_password
+from django.shortcuts import render, redirect
+from .models import Personas
 from .forms import PersonaForm
+from django.contrib import messages
 
 # Create your views here.
 def pagPrincipal(request):
@@ -15,21 +19,46 @@ def pagNosotros(request):
 
     return render (request,'app/pagNosotros.html')
 
-def pagRegistro(request):
-
-    return render (request,'app/pagRegistro.html')
-
 def pagEmpleo(request):
 
     return render (request,'app/pagEmpleo.html')
 
-def pagRegistroEmp(request):
+def pagIniciosesion(request):
+    if request.method == 'POST':
+        usuario = request.POST['usuario']
+        contra = request.POST['contra']
+        try:
+            persona = Personas.objects.get(correo_per=usuario)
+        except Personas.DoesNotExist:
+            messages.error(request, 'El usuario o la contraseña son incorrectos')
+            return redirect('pagPrincipal')
+        
+        if check_password(contra, persona.clave_per):
+            try:
+                user = User.objects.get(username=persona.correo_per)
+            except User.DoesNotExist:
 
-    return render (request,'app/pagRegistroEmp.html')
+                user = User.objects.create_user(username=persona.correo_per, password=contra)
+            
+        
+            login(request, user)
+            messages.success(request, '¡Registrado exitosamente!')
+            return redirect('pagPrincipal')
+        
+        messages.error(request, 'El usuario o la contraseña son incorrectos')
+        return redirect('iniciar')
+    
+    return render(request, 'app/pagIniciosesion.html')
 
 
 
-def form_persona(request):
+
+
+
+
+
+
+def pagRegistro(request):
     datos = {
         'form': PersonaForm()
     }
@@ -40,10 +69,10 @@ def form_persona(request):
             formulario.save()
             datos['mensaje']= "Guardado correctamente"
 
-    return render(request, 'app/form_persona.html',datos)
+    return render(request, 'app/pagRegistro.html',datos)
 
-def form_personaE(request, id):
-    auto = Persona.objects.get(correo_per=id)
+def pagModificar(request, id):
+    auto = Personas.objects.get(id_per=id)
     datos = {
         'form': PersonaForm(instance=auto)
     }
@@ -53,18 +82,24 @@ def form_personaE(request, id):
             formulario.save()
             datos['mensaje'] = "Modificado Correctamente"
 
-    return render(request, 'app/form_personaE.html', datos)
+    return render(request, 'app/pagModificar.html', datos)
+
+
+
+
+
+
 
 
 def listar_E_persona(request):
-    Personas = Persona.objects.all()
+    Personas = Personas.objects.all()
     datos = {
         "personas":Personas
     }
     return render(request, 'app/listar_E_persona.html',datos)
 
 def form_D_persona(request, id):
-    aut = persona.objects.get(id=id)
+    aut = Personas.objects.get(id=id)
     datos = {
         'form': PersonaForm(instance=aut)
     }
@@ -74,3 +109,7 @@ def form_D_persona(request, id):
         datos['mensaje'] = "Eliminado Correctamente"
 
     return render(request, 'app/form_D_persona.html', datos)
+
+
+
+

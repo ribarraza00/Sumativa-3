@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
-from app.models import Persona
+from app.models import Personas
 from .serializers import PersonaSerializers
 from .serializers import PersonaSerializers2
 
@@ -14,7 +14,7 @@ from .serializers import PersonaSerializers2
 @api_view(['GET','POST'])
 def lista_personas(request):
     if request.method == 'GET':
-        persona = Persona.objects.all()
+        persona = Personas.objects.all()
         serializer = PersonaSerializers(persona,many=True)
         return Response(serializer.data)
     
@@ -30,8 +30,8 @@ def lista_personas(request):
 @api_view(['GET','PUT','DELETE'])
 def vista_persona_mod(request, id):
     try:
-        p = Persona.objects.get(id_per=id)
-    except Persona.DoesNotExist:
+        p = Personas.objects.get(id_per=id)
+    except Personas.DoesNotExist:
         return Response(status= status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':

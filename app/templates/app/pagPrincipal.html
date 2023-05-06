@@ -1,47 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     {%load static%}
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trabajo futuro</title>
-    <link rel="shortcut icon" href="{%static 'app/img/favicon-32x32.png' %}" type="core/img/x-icon">
-    <link rel="stylesheet" href="{%static 'app/css/css.css'%}">
-    <link rel="stylesheet" href="{%static 'app/img'%}">
-    <link rel="stylesheet" href="./js/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabajo Futuro</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <link rel="stylesheet" href="{%static 'app/css/css.css'%}">
+  <link rel="shortcut icon" href="{%static 'app/img/favicon-32x32.png' %}" type="core/img/x-icon">
+  <link rel="stylesheet" href="{%static 'app/img'%}">
 </head>
-<body>
-    {%load static%}
-    <header class="hero">
-        <nav class="nav container">
-            <div class="nav_logo">
-                <h2 class="nav__tittle">Trabajo Futuro</h2>
+  <header>
+    <div class="menu-p">
+        
+        <div><a class="logo" href="{% url 'pagPrincipal'%}">Trabajo Futuro</a></div>
+            <nav class="menu">
+                <a href="{% url 'pagRegistro'%}">Registrate</a>
+              <a href="{% url 'pagEmpleo'%}">Empleo</a>
+              <a href="{% url 'pagNosotros'%}">Nosotros</a>
+              <a href="{% url 'pagIniciosesion'%}">Iniciar sesion</a>
 
-            </div>
-            <ul class="nav_link nav_link--menu ">
-                <li class="nav_items">
-                    <a href="" class="nav_links">Inicia sesión</a>
-                </li>
-                <li class="nave_items">
-                    <a href= "{% url 'form_persona'%}">Registrate</a>
-                </li>
-                <li class="nave_items">
-                    <a href="{% url 'pagEmpleo'%}" class="nav_links">Empleo</a>
-                </li>
-                <li class="nave_items">
-                    <a href="{% url 'pagNosotros'%}" class="nav_links">Nosotros</a>
-                </li>
-                <img src="{%static 'app/img/casa.svg' %}" class="nav_close">
-            </ul>
-            <div class="nav_menu">
-            <img src="{%static 'app/img/menu.svg' %}" class="nav_img" >
-            </div>         
-        </nav>
+              </nav>
+     </div>
+</header>
         <section class="hero_container container">
             <h1 class="hero_tittle">Encuentra el trabajo de tus sueños</h1>
             <p class="hero_paragraph">Hay 114.924 vacantes esperándote en Chile</p>
-            <a href="{% url 'form_persona'%}"class="cta">¡Registrate ahora!</a>
+            <a href="{% url 'pagRegistro'%}"class="cta">¡Registrate ahora!</a>
          
         </section>
     </header>
@@ -126,4 +111,3 @@
    
 </body>
 
-</html>

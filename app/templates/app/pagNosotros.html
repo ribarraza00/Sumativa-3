@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    {%load static%}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesion</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link rel="stylesheet" href="{%static 'app/css/css.css'%}">
-</head>
-<header>
-    <div class="menu-p">
-      <div><a class="logo" href="{% url 'pagPrincipal'%}">Trabajo Futuro</a></div>
-            <nav class="menu">
-              <a href="">Inicia sesión</a>
-              <a href="{% url 'form_persona'%}">Registrate</a>
-              <a href="#">Personas</a>
-              <a href="{% url 'pagEmpleo'%}">Empleo</a>
-              <a href="{% url 'pagNosotros'%}">Nosotros</a>
-            </nav>
-    </div>
-</header>
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+
 <body>
     <div class="lorem">
              <div class="loremTitle"><h3>Visión :</h3></div>
@@ -39,3 +21,5 @@
       </div>
 </body>
 </html>
+
+{% endblock %}
