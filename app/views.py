@@ -11,9 +11,14 @@ def pagPrincipal(request):
 
     return render (request,'app/pagPrincipal.html')
 
-def pagIniciosesion(request):
+def empRetail(request):
 
-    return render (request,'app/pagIniciosesion.html')
+    return render (request,'app/empRetail.html')
+
+def empInformaticos(request):
+
+    return render (request,'app/empInformaticos.html')
+
 
 def pagNosotros(request):
 
@@ -42,8 +47,7 @@ def pagIniciosesion(request):
 
                 user = User.objects.create_user(username=persona.correo_per, password=contra)
             
-#INICIO SESION PRUEBA 2
-#        
+        
             login(request, user)
             messages.success(request, '¡Registrado exitosamente!')
             return redirect('pagPrincipal')
@@ -52,7 +56,7 @@ def pagIniciosesion(request):
         return redirect('iniciar')
     
     return render(request, 'app/pagIniciosesion.html')
-
+            
 #INGRESO RECLAMO
 
 def pagReclamos(request):

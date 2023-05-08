@@ -5,6 +5,7 @@ from rest_api.viewsLogin import login
 
 urlpatterns = [
     path('lista_personas/',lista_personas,name="lista_personas"),
-    path('login/',login,name='login'),
     path('datos_personas/<id>',vista_persona_mod,name="modif_persona"),
+    path('login/',login,name='login'),
 ]
+

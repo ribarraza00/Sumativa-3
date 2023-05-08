@@ -25,7 +25,7 @@ def lista_personas(request):
            serializer.save()
            return  Response(serializer.data,status= status.HTTP_201_CREATED)
         else:
-            return  Response(serializer.data,status= status.HTTP_400_BAD_REQUEST)
+            return  Response(serializer.error,status= status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET','PUT','DELETE'])
 def vista_persona_mod(request, id):
@@ -49,8 +49,6 @@ def vista_persona_mod(request, id):
     elif request.method == 'DELETE':
         p.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
 
         
     

@@ -100,6 +100,8 @@ DATABASES = {
           },
     }
 }
+#PGPASSWORD=******** psql -h containers-us-west-109.railway.app -U postgres -p 5943 -d railway
+
 
 
 # Password validation
