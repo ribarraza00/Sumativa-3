@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Personas
+from .models import Contacto
  
 
 class PersonaForm(ModelForm):
@@ -19,3 +20,9 @@ class PersonaForm(ModelForm):
             'Comuna': forms.Select(attrs={'class': 'form-control'}),
             'Profecion': forms.Select(attrs={'class': 'form-control'}),
         }
+
+class ContactoForm(forms.ModelForm):
+    class Meta:
+        model = Contacto
+        #fields = ['nomContacto','apeContacto','correoContacto','Consulta','mensaje','avisos']
+        fields = '__all__'

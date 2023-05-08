@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import check_password
 from django.shortcuts import render, redirect
 from .models import Personas
-from .forms import PersonaForm
+from .forms import PersonaForm, ContactoForm
 from django.contrib import messages
 
 # Create your views here.
@@ -23,6 +23,8 @@ def pagEmpleo(request):
 
     return render (request,'app/pagEmpleo.html')
 
+#INICIO DE SESION PRUEBA
+
 def pagIniciosesion(request):
     if request.method == 'POST':
         usuario = request.POST['usuario']
@@ -40,7 +42,8 @@ def pagIniciosesion(request):
 
                 user = User.objects.create_user(username=persona.correo_per, password=contra)
             
-        
+#INICIO SESION PRUEBA 2
+#        
             login(request, user)
             messages.success(request, '¡Registrado exitosamente!')
             return redirect('pagPrincipal')
@@ -50,13 +53,25 @@ def pagIniciosesion(request):
     
     return render(request, 'app/pagIniciosesion.html')
 
+#INGRESO RECLAMO
+
+def pagReclamos(request):
+    data = {
+        'form': ContactoForm()
+    }
+
+    if request.method == 'POST':
+        formulario = ContactoForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            data["mensaje"] = "Contacto guardado"
+        else:
+            data["form"] = formulario
+
+    return render(request, 'app/pagReclamos.html', data)
 
 
-
-
-
-
-
+#REGISTRO USUARIO
 
 def pagRegistro(request):
     datos = {
@@ -71,6 +86,8 @@ def pagRegistro(request):
 
     return render(request, 'app/pagRegistro.html',datos)
 
+#MODIFICAR USUARIO 
+
 def pagModificar(request, id):
     auto = Personas.objects.get(id_per=id)
     datos = {
@@ -84,12 +101,7 @@ def pagModificar(request, id):
 
     return render(request, 'app/pagModificar.html', datos)
 
-
-
-
-
-
-
+#PENDIENTE
 
 def listar_E_persona(request):
     Personas = Personas.objects.all()
@@ -97,6 +109,8 @@ def listar_E_persona(request):
         "personas":Personas
     }
     return render(request, 'app/listar_E_persona.html',datos)
+
+#PENDIENTE
 
 def form_D_persona(request, id):
     aut = Personas.objects.get(id=id)

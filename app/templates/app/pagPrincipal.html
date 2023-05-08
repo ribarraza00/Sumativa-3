@@ -18,6 +18,7 @@
                 <a href="{% url 'pagRegistro'%}">Registrate</a>
               <a href="{% url 'pagEmpleo'%}">Empleo</a>
               <a href="{% url 'pagNosotros'%}">Nosotros</a>
+              <a href="{% url 'pagReclamos'%}">Consultas</a>
               <a href="{% url 'pagIniciosesion'%}">Iniciar sesion</a>
 
               </nav>
@@ -59,8 +60,8 @@
             <div class="knowledger_container container">
                 <div class="knowledged_texts">                    
                     <h2 class="subtitle">Estamos comprometidos con tu búsqueda de trabajo, te ayudaremos a mejorar la efectividad en tus postulaciones y velaremos porque tengas retroalimentación</h2>
-                    <p class="knowledger_paragraph">¿Tiene plaza laboral libre? Encuesta ejemplo para solicitantes de empleo agiliza la selección de candidatos para otras rondas de proceso de selección.</p>
-                    <a href="encuesta.html" class="cta">Realizar encuesta</a>
+                    <p class="knowledger_paragraph">¿Tiene plaza laboral libre? Consulta ejemplo para solicitantes de empleo agiliza la selección de candidatos para otras rondas de proceso de selección.</p>
+                    <a href="{% url 'pagReclamos'%}" class="cta">Realizar consulta</a>
                 </div>
                 <figure class="knowledged_picture">
                     <img src= "{%static 'app/img/antonio-janeski-CHVTt0aGbx0-unsplash.jpg' %}" class="knowledged_img">

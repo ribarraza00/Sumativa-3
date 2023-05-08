@@ -33,7 +33,7 @@ class Personas(models.Model):
     id_per = models.IntegerField(primary_key=True, verbose_name='Rut usuario')
     nombre_per = models.CharField(max_length=50, verbose_name='Primer nombre')
     apellido_per = models.CharField(max_length=30, verbose_name='Primer apellido')
-    correo_per = models.CharField(max_length=30, verbose_name='Correo')
+    correo_per = models.EmailField(max_length=30, verbose_name='Correo electronico')
     clave_per = models.CharField(max_length=20, verbose_name='Contraseña')
     codPostal_per = models.IntegerField(verbose_name='Codigo postal')
     Region = models.ForeignKey(Region, on_delete=models.PROTECT,null=True)
@@ -43,9 +43,25 @@ class Personas(models.Model):
     def __str__(self):
         return self.nombre_per
     
+ #Definicion tabla Contacto    
 
+opciones_reclamo = [
+    [0,"Consulta"],
+    [0,"Reclamo"],
+    [0,"Sugerencias"],
+    [0,"Felicitaciones"]
+]
 
+class Contacto(models.Model):
+    nomContacto = models.CharField(max_length=50, verbose_name='Nombre ')
+    apeContacto = models.CharField(max_length=30, verbose_name='Apellidos')
+    correoContacto = models.EmailField(max_length=30, verbose_name='Correo')
+    Consulta = models.IntegerField(choices=opciones_reclamo)
+    mensaje = models.TextField(max_length=300, verbose_name= "Mensaje")
+    avisos = models.BooleanField()
 
+    def __str__(self):
+        return self.nomContacto
   
   
   
